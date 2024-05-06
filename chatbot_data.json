@@ -1,0 +1,7 @@
+{
+    "responses": {
+        "hi": "Hello! How can I help you today?",
+        "how are you": "I'm good, thank you for asking! How can I assist you today?",
+        "bye": "Goodbye! Have a great day!"
+    }
+}
