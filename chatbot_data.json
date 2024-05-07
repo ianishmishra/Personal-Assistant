@@ -1,64 +1,44 @@
 {
     "responses": {
-        "hi": [
-            "Hello! How can I help you today?",
-            "Hi there! What can I do for you?",
-            "Greetings! Looking for assistance?"
-        ],
-        "how are you": [
-            "I'm good, thank you for asking! How can I assist you today?",
-            "I'm doing well, thanks! What about you?",
-            "Great! What can I help you with today?"
-        ],
-        "bye": [
-            "Goodbye! Have a great day!",
-            "See you later! Take care!",
-            "Farewell! Hope to talk to you soon."
-        ],
-        "what is your name": [
-            "My name is JARVIS, your personal assistant.",
-            "I am called JARVIS. How can I assist you today?",
-            "They call me JARVIS. What do you need help with?"
-        ],
-        "what can you do": [
-            "I can provide information, help manage your tasks, and assist with reminders. How may I assist you today?",
-            "From scheduling to info searches, I can handle quite a bit. What do you need?",
-            "I'm here to help with your tasks and answer questions. What's on your mind?"
-        ],
-        "tell me a joke": [
-            "Why don't skeletons fight each other? They don't have the guts.",
-            "What do you call fake spaghetti? An impasta!",
-            "How does a penguin build its house? Igloos it together."
-        ],
-        "how old are you": [
-            "I was created in 2024, so I'm quite young, but I learn quickly!",
-            "Age is just a number! I'm young enough to be modern but experienced enough to be wise.",
-            "I'm fairly new, made in 2024, but improving every day!"
-        ],
-        "who created you": [
-            "I was created by a talented developer eager to make life easier and more efficient for people.",
-            "A team of dedicated programmers brought me to life. They're quite the brainy bunch!",
-            "I was designed by someone like you, looking to make the world a little easier to navigate."
-        ],
-        "what is the time": [
-            "I'm not able to check real-time data, but you can look at your device's clock for the most accurate time.",
-            "I can't fetch real-time data, so it's best to check a clock nearby.",
-            "While I can't provide the current time, your phone or computer should be able to help you out."
-        ],
-        "are you human": [
-            "No, I'm a virtual assistant powered by sophisticated algorithms and machine learning.",
-            "I'm not human, but I'm programmed to be helpful!",
-            "Definitely not human, but I'm here to help just the same."
-        ],
-        "give me a quote": [
-            "Here's one I like: 'The only way to do great work is to love what you do.' - Steve Jobs",
-            "'Be yourself; everyone else is already taken.' - Oscar Wilde",
-            "'Success is not final, failure is not fatal: It is the courage to continue that counts.' - Winston Churchill"
-        ],
-        "can you help me with my homework": [
-            "I can try! Tell me what you need help with, and I'll do my best.",
-            "Sure, what's the topic? Let's tackle it together.",
-            "Homework time! Describe your assignment, and I'll see how I can assist."
-        ]
+        "greeting_responses": {
+            "keywords": ["hi", "hello", "hola", "hey", "greetings", "howdy"],
+            "responses": [
+                "Hello! How can I help you today?",
+                "Hi there! What can I do for you?",
+                "Greetings! Looking for assistance?"
+            ]
+        },
+        "wellbeing_inquiry_responses": {
+            "keywords": ["how are you", "how's it going", "what's up"],
+            "responses": [
+                "I'm good, thank you for asking! How can I assist you today?",
+                "I'm doing well, thanks! What about you?",
+                "Great! What can I help you with today?"
+            ]
+        },
+        "farewell_responses": {
+            "keywords": ["bye", "goodbye", "see you", "later", "farewell"],
+            "responses": [
+                "Goodbye! Have a great day!",
+                "See you later! Take care!",
+                "Farewell! Hope to talk to you soon."
+            ]
+        },
+        "identity_query_responses": {
+            "keywords": ["what is your name", "who are you", "what are you called"],
+            "responses": [
+                "My name is JARVIS, your personal assistant.",
+                "I am called JARVIS. How can I assist you today?",
+                "They call me JARVIS. What do you need help with?"
+            ]
+        },
+        "capabilities_query_responses": {
+            "keywords": ["what can you do", "what are your functions", "how can you help"],
+            "responses": [
+                "I can provide information, help manage your tasks, and assist with reminders. How may I assist you today?",
+                "From scheduling to info searches, I can handle quite a bit. What do you need?",
+                "I'm here to help with your tasks and answer questions. What's on your mind?"
+            ]
+        }
     }
 }
