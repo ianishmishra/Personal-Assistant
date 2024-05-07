@@ -35,10 +35,9 @@ class Chatbot:
         logging.info("Chatbot started.")
 
 
-
     def load_responses(self):
         
-        print("Loading responses")
+        # print("Loading responses")
         # Load responses from JSON file
         try:
             with open(self.data_file, 'r') as file:
@@ -64,40 +63,8 @@ class Chatbot:
             logging.error(f"Failed to save responses: {e}")
 
 
-    # def get_response(self, message):
-    #     print("Message received in get_response function: {}".format(message))
-    #     # Search through existing categories for a keyword match
-    #     for category, content in self.responses.items():
-    #         if message in content['keywords']:
-    #             return random.choice(content['responses'])
-
-    #     # If no existing response is found, ask the user for a new response and details
-    #     print("\nI don't know how to respond to that. Let's add a new response.")
-    #     new_response = input("How should I respond to '{}'?\n".format(message))
-    #     new_category = input("Enter a category for this response (existing or new):\n")
-    #     new_keywords = input("Enter keywords for this response, separated by commas (include your original input):\n").split(',')
-
-    #     # Clean up keyword input
-    #     new_keywords = [keyword.strip().lower() for keyword in new_keywords]
-
-    #     # Check if the category already exists, if not, create a new category
-    #     if new_category in self.responses:
-    #         # Add new keywords to the category's keywords and avoid duplicates
-    #         self.responses[new_category]['keywords'] = list(set(self.responses[new_category]['keywords'] + new_keywords))
-    #         # Add the new response
-    #         self.responses[new_category]['responses'].append(new_response)
-    #     else:
-    #         # Create a new category with the new keywords and response
-    #         self.responses[new_category] = {'keywords': new_keywords, 'responses': [new_response]}
-
-    #     # Save the updated responses to the JSON file
-    #     self.save_responses()
-
-    #     return new_response
-
-
     def get_response(self, message):
-        print("Message received in get_response function: {}".format(message))
+        # print("Message received in get_response function: {}".format(message))
         highest_score = 0
         best_match_category = None
 
@@ -117,7 +84,7 @@ class Chatbot:
             return random.choice(self.responses[best_match_category]['responses'])
         
         # If no good match is found, ask the user to define the response
-        print("\nI don't know how to respond to that. Let's add a new response.")
+        # print("\nI don't know how to respond to that. Let's add a new response.")
         new_response = input("How should I respond to '{}'?\n".format(message))
         new_category = input("Enter a category for this response (existing or new):\n")
         new_keywords = input("Enter keywords for this response, separated by commas (include your original input):\n").split(',')
@@ -136,7 +103,6 @@ class Chatbot:
         return new_response
 
 
-
     def log_chat(self, message, response):
         # Log the conversation to history
         self.chat_history.append(f"You: {message}\nBot: {response}\n")
@@ -151,9 +117,10 @@ class Chatbot:
         except Exception as e:
             logging.error(f"Failed to save chat history: {e}")
             
+
     def speak(self, text):
         """Speak the response using gTTS or pyttsx3 based on internet connectivity."""
-        print("text received : {}".format(text))
+        # print("text received : {}".format(text))
         if is_connected():
             try:
                 tts = gTTS(text=text, lang='en')
@@ -168,6 +135,7 @@ class Chatbot:
         else:
             self.engine.say(text)
             self.engine.runAndWait()
+
 
     def listen(self):
         
@@ -240,27 +208,28 @@ class Chatbot:
         #         return None
         # return said.lower()
         
-        
-        
-        
-            
-            
 
     def run(self):
         try:
             while True:
                 
-                if is_connected():
-                    spoken_text = self.listen()
-                    if spoken_text == "quit":
-                        break
-                    if spoken_text is None:
-                        continue
-                else:
+                if is_connected() == False:
                     print("No internet connection, switching to text input:")
                     spoken_text = input("You: ").lower()
-                    if "quit" in spoken_text:
+                    if spoken_text is None:
+                        continue
+                    elif "quit" in spoken_text:
+                        self.save_chat_history()
                         break
+                
+                else:
+                    spoken_text = self.listen()
+                    if spoken_text is None:
+                        continue
+                    elif spoken_text == "quit":
+                        self.save_chat_history()
+                        break
+
 
                 response = self.get_response(spoken_text)
                 self.speak(response)
